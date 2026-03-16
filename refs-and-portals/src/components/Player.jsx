@@ -5,6 +5,7 @@ export default function Player() {
       <p>
         <input type="text" />
         <button>Set Name</button>
+        <p>Testing...</p>
       </p>
     </section>
   );
