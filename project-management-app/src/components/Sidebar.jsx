@@ -1,9 +1,12 @@
 import React from "react";
 
-const Sidebar = ({ setIsAddProject, projects }) => {
-
+const Sidebar = ({ setIsAddProject, projects, setIsTasks, setProjectId }) => {
   const handleAddProject = () => {
     setIsAddProject(true);
+  };
+  const showTasks = (projectId) => {
+    setIsTasks(true);
+    setProjectId(projectId);
   }
   return (
     <div className="sidebar">
@@ -12,8 +15,14 @@ const Sidebar = ({ setIsAddProject, projects }) => {
         + Add Project
       </button>
       <ul>
-        {projects.map(element => {
-           return <li key={element.id}><button className="project-title-btn">{element.title}</button></li>
+        {projects.map((element) => {
+          return (
+            <li key={element.id}>
+              <button className="project-title-btn" 
+                onClick={() => showTasks(element.id)}
+              >{element.title}</button>
+            </li>
+          );
         })}
       </ul>
     </div>

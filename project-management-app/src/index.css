@@ -120,3 +120,45 @@
 .project-title-btn:hover {
     background-color: rgba(240, 237, 237, 0.192);
 }
+
+.tasks-container {
+    width: 70vw;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.tasks-container h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(63, 62, 62);
+}
+
+.tasks-container p:first-of-type {
+    color: rgb(134, 134, 134);
+}
+
+.tasks-container p {
+    margin: 10px 0px;
+}
+
+.tasks label {
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(63, 62, 62);
+    margin: 10px 0px;
+}
+
+.tasks input {
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(231, 226, 226);
+    width: 20vw;
+    color: rgb(73, 73, 73);
+    padding: 5px;
+    margin: 10px 0px;
+}
+
+.tasks button {
+    margin-left: 15px;
+    color: rgb(61, 61, 61);
+}

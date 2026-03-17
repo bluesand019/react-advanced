@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 
-const Form = ({ setProjects, setIsAddProject }) => {
+const Form = ({ setProjects, setIsAddProject, setIsTasks }) => {
     const titleRef = useRef();
     const descriptionRef = useRef();
     const dateRef = useRef();
@@ -15,6 +15,7 @@ const Form = ({ setProjects, setIsAddProject }) => {
         }
         setProjects((prevProjects) => [newProject, ...prevProjects]);
         setIsAddProject(false);
+        setIsTasks(false);
     }
 
   return (
