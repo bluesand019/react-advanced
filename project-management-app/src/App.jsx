@@ -8,20 +8,7 @@ function App() {
   const [isAddProject, setIsAddProject] = useState(false);
   const [projectId, setProjectId] = useState("");
   const [isTasks, setIsTasks] = useState(false);
-  const [projects, setProjects] = useState([
-    {
-      id: "123",
-      title: "title 1",
-      description: "Random desc",
-      date: "12-11-2003",
-    },
-    {
-      id: "1234",
-      title: "title 2",
-      description: "Random desc-2",
-      date: "12-11-2006",
-    },
-  ]);
+  const [projects, setProjects] = useState([]);
 
   const showWindow = () => {
     if (isAddProject) {
@@ -34,7 +21,14 @@ function App() {
       );
     } else {
       if (isTasks) {
-        return <Tasks projects={projects} projectId={projectId} />;
+        return (
+          <Tasks
+            setProjects={setProjects}
+            projects={projects}
+            projectId={projectId}
+            setIsAddProject={setIsAddProject}
+          />
+        );
       } else return <Home />;
     }
   };

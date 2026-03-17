@@ -176,3 +176,13 @@
     justify-content: space-between;
     padding: 15px;
 }
+
+.title-container {
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-container button {
+    color: rgb(61, 61, 61);
+}
