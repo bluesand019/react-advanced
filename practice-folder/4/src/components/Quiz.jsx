@@ -3,11 +3,25 @@ import QUESTIONS from "../Questions";
 
 const Quiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
-  const isQuizRunning = useRef(true);
+  const isQuizRunning = questionIndex < QUESTIONS.length;
+  const [countDown, setCountdown] = useState(5000);
 
-  if (questionIndex > QUESTIONS.length - 1) {
-    isQuizRunning.current = false;
-  }
+  useEffect(() => {
+    if (!isQuizRunning) {
+        setCountdown(0);
+        return;
+    }
+    setCountdown(5000);
+    const interval = setInterval(() => {
+      setCountdown(prevCountDown => {
+        if(prevCountDown <= 0) return 0;
+        return prevCountDown - 1000;
+    });
+    }, 1000);
+    return () => {
+        clearInterval(interval);
+    };
+  }, [questionIndex, isQuizRunning]);
 
   useEffect(() => {
     if (!isQuizRunning) return;
@@ -26,12 +40,12 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
-        <p>time</p>
+      <p>time: {countDown/1000} </p>
       <h1>
-        {isQuizRunning.current ? QUESTIONS[questionIndex] : "Quiz is over!"}
+        {isQuizRunning ? QUESTIONS[questionIndex] : "Quiz is over!"}
       </h1>
       <br />
-      {isQuizRunning.current && (
+      {isQuizRunning && (
         <button onClick={handleQuestionChange}>Next</button>
       )}
     </div>
