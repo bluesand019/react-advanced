@@ -11,7 +11,14 @@ function App() {
   const [chosenCount, setChosenCount] = useState(0);
 
   function handleSetCount(newCount) {
+    // react handles states as batches, so two state update function below
+    // won't re-render the component twice. It will re-render the compoenent
+    // once. That's why if we want to update the current state value, we need
+    // to use updater function!
+    
     setChosenCount(newCount);
+    setChosenCount(prevChosenCount => prevChosenCount + 1);
+    // console.log(chosenCount); //this won't print the current state value, rather the previous state value
   }
   return (
     <>
