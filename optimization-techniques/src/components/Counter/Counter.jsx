@@ -27,6 +27,13 @@ function isPrime(number) {
   return true;
 }
 
+//memo() is used to memoize(cache) functional components and prevents them
+//from re-rendering unless their props have changed.
+//-> don't overuse memo(), use it as high up in the component tree as possible
+//-> blocking a component execution there ill also block all child component execution
+
+//you could consider removing memo if you use another ConfigureCounter for the counter component
+
 const Counter = memo(function Counter({ initialCount }) {
   log('<Counter /> rendered', 1);
   const initialCountIsPrime = isPrime(initialCount);
