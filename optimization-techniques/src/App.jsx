@@ -18,7 +18,10 @@ function App() {
       <Header />
       <main>
         <ConfigureCounter onSet={handleSetCount} />
-        <Counter initialCount={chosenCount} />
+        {/* key can be used in any component.
+        Changing a component's key can force React to completely
+         unmount the old instance and mount a new one with fresh state. */}
+        <Counter key={chosenCount} initialCount={chosenCount} />
       </main>
     </>
   );

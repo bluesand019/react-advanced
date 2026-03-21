@@ -43,8 +43,13 @@ const Counter = memo(function Counter({ initialCount }) {
     () => isPrime(initialCount),
     [initialCount],
   );
+ 
 
   const [counter, setCounter] = useState(initialCount);
+
+  //  useEffect(() => {
+  //   setCounter(initialCount);
+  // }, [initialCount])
 
   const handleDecrement = useCallback(function handleDecrement() {
     setCounter((prevCounter) => prevCounter - 1);
