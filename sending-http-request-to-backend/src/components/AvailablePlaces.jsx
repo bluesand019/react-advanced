@@ -1,21 +1,55 @@
 import { useEffect, useState } from "react";
 import Places from "./Places.jsx";
+import Error from "../components/Error.jsx"
 
 export default function AvailablePlaces({ onSelectPlace }) {
   const [isFetching, setIsFetching] = useState(false);
   const [availablePlaces, setAvailablePlaces] = useState([]);
+  const [error, setError] = useState();
+
+
+  //there are two situations where sending the data request might fail
+  // 1. connection broken
+  // 2. something goes wrong in the backend
+  // we've to handle both cases
+
+  // useEffect(() => {
+  //   setIsFetching(true);
+  //   fetch("http://localhost:3000/places")
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((resData) => {
+  //       setAvailablePlaces(resData.places);
+  //       setIsFetching(false);
+  //     });
+  // }, []);
+
+  // fetching can be done with async await too (recommended)
 
   useEffect(() => {
-    setIsFetching(true);
-    fetch("http://localhost:3000/places")
-      .then((response) => {
-        return response.json();
-      })
-      .then((resData) => {
+    async function fetchPlaces() {
+      setIsFetching(true);
+      try {
+        const response = await fetch('http://localhost:3000/places');
+        const resData = await response.json();
+  
+        if(!response.ok) {
+          throw new Error('Failed to fetch places');
+        }
         setAvailablePlaces(resData.places);
-        setIsFetching(false);
-      });
-  }, []);
+      } catch (error) {
+        setError({message: error.message || 'Could not fetch places.'});
+      }
+
+      setIsFetching(false);
+    }
+    fetchPlaces();
+  },[])
+
+  if(error) {
+   return <Error title="An error occurred!" message={error.message} />
+  }
 
   return (
     <Places
