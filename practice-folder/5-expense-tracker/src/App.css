@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   padding: 0px;
   margin-top: 0px;
+  font-family: "Public Sans", sans-serif;
 }
 
 .navbar {
@@ -94,14 +97,27 @@
 }
 
 .li-btns button:nth-child(1) {
-    background-color: rgb(202, 13, 13);
+    background-color: hsl(0, 58%, 42%);
     border: none;
     color: white;
 }
+.li-btns button:nth-child(1):hover {
+    background-color: hsl(0, 88%, 42%);
+}
+.li-btns button:nth-child(1):active {
+    background-color: hsl(0, 60%, 55%);
+}
+
 .li-btns button:nth-child(2) {
     background-color: rgb(37, 37, 37);
     border: none;
     color: white;
+}
+.li-btns button:nth-child(2):hover {
+    background-color:  rgba(37, 37, 37, 0.911);
+}
+.li-btns button:nth-child(2):active {
+    background-color: rgba(37, 37, 37, 0.811);
 }
 
 .add-transaction-container {
@@ -112,7 +128,18 @@
   padding: 15px 20px;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
   width: 15vw;
-  height: 250px;
+  height: 200px;
+}
+
+.add-transaction-container h1 {
+    font-size: 20px;
+}
+.add-transaction-container label {
+    font-size: 15px;
+}
+
+#amount-label {
+    color: rgba(255, 255, 255, 0.767);
 }
 
 .add-form {
@@ -135,8 +162,14 @@
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
+}
+.add-form button:hover {
+    background-color: hsla(192, 88%, 84%, 0.808)
+}
+.add-form button:active {
+    background-color: hsla(192, 88%, 84%, 0.616)
 }
 
 .transaction-section {
