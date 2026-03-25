@@ -18,6 +18,10 @@
   gap: 32px;
 }
 
+.navbar ul li {
+    cursor: pointer;
+}
+
 #bellIcon {
   margin-right: 16px;
 }
@@ -83,5 +87,59 @@
 }
 
 .li-btns button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.li-btns button:nth-child(1) {
+    background-color: rgb(202, 13, 13);
+    border: none;
+    color: white;
+}
+.li-btns button:nth-child(2) {
+    background-color: rgb(37, 37, 37);
+    border: none;
+    color: white;
+}
+
+.add-transaction-container {
+  background-color: #004B57;
+  color: white;
+  border-radius: 7px;
+  margin: 20px;
+  padding: 15px 20px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+  width: 15vw;
+  height: 250px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#amount {
     padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: hsl(188, 40%, 17%);
+    font-weight: bold;
+    color: white;
+}
+
+.add-form button {
+    background-color: #B2ECFA;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.transaction-section {
+  display: flex;
+  justify-content: center;
 }

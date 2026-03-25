@@ -8,7 +8,7 @@ const TransactionList = () => {
         <ul>
           <li>
             <div className="list">
-              <span>dummy 1</span>
+              <span>dummy 1:-$100</span>
               <div className="li-btns">
                 <button>Delete</button>
                 <button>Edit</button>
@@ -17,7 +17,7 @@ const TransactionList = () => {
           </li>
           <li>
             <div className="list">
-              <span>dummy 2</span>
+              <span>dummy 2:-$60</span>
               <div className="li-btns">
                 <button>Delete</button>
                 <button>Edit</button>
@@ -26,7 +26,7 @@ const TransactionList = () => {
           </li>
           <li>
             <div className="list">
-              <span>dummy 3</span>
+              <span>dummy 3:+$28</span>
               <div className="li-btns">
                 <button>Delete</button>
                 <button>Edit</button>
@@ -35,7 +35,7 @@ const TransactionList = () => {
           </li>
           <li>
             <div className="list">
-              <span>dummy 4</span>
+              <span>dummy 4:+$59</span>
               <div className="li-btns">
                 <button>Delete</button>
                 <button>Edit</button>
@@ -44,14 +44,13 @@ const TransactionList = () => {
           </li>
           <li>
             <div className="list">
-              <span>dummy 5</span>
+              <span>dummy 5:-$12</span>
               <div className="li-btns">
                 <button>Delete</button>
                 <button>Edit</button>
               </div>
             </div>
           </li>
-          
         </ul>
       </div>
     </div>
