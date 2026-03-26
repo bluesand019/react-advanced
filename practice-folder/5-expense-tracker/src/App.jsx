@@ -1,15 +1,15 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import transactionContextProvider from "./store/transactionContextProvider";
+import TransactionContextProvider from "./store/transactionContextProvider";
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <transactionContextProvider>
+      <TransactionContextProvider>
         <Hero />
-      </transactionContextProvider>
+      </TransactionContextProvider>
     </>
   );
 };

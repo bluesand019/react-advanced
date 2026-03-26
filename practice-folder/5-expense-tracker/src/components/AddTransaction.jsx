@@ -1,6 +1,9 @@
 import React from "react";
+import { useContext } from "react";
+import { transactionContext } from "../store/transactionContextProvider";
 
 const AddTransaction = () => {
+  const { addTransaction } = useContext(transactionContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const fd = new FormData(event.target);
@@ -8,7 +11,11 @@ const AddTransaction = () => {
     const data = Object.fromEntries(fd.entries());
     data.transactionType = transactionType;
 
-    console.log(data);
+    // console.log(data);
+    const title = data.title;
+    const amount = +data.amount;
+    const isExpense = data["transaction-type"] === "expense";
+    addTransaction(title, amount, isExpense);
 
     event.target.reset();
   };
@@ -17,6 +24,16 @@ const AddTransaction = () => {
     <div className="add-transaction-container">
       <h1>Add Transaction</h1>
       <form className="add-form" onSubmit={handleSubmit}>
+        <label htmlFor="title" id="title-label">
+          TITLE
+        </label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter transaction title..."
+          required
+        />
         <label htmlFor="amount" id="amount-label">
           AMOUNT
         </label>

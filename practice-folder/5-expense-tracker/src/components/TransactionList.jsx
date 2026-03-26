@@ -1,11 +1,30 @@
 import React from "react";
+import { useContext } from "react";
+import { transactionContext } from "../store/transactionContextProvider";
 
 const TransactionList = () => {
+  const { transactions } = useContext(transactionContext);
+
   return (
     <div className="transaction-list-container">
       <h1>All Transactions</h1>
       <div className="transaction-list">
         <ul>
+          {transactions.map((element) => {
+            return (
+              <li>
+                <div className="list">
+                  <span>
+                    {element.title}:${element.amount}
+                  </span>
+                  <div className="li-btns">
+                    <button>Delete</button>
+                    <button>Edit</button>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
           <li>
             <div className="list">
               <span>dummy 1:-$100</span>
