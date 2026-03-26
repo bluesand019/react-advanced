@@ -15,7 +15,7 @@ const TransactionList = () => {
               <li>
                 <div className="list">
                   <span>
-                    {element.title}:${element.amount}
+                    {element.title}:{element.isExpense? "-" : "+"}${element.amount}
                   </span>
                   <div className="li-btns">
                     <button onClick={()=>deleteTransaction(element.id)}>Delete</button>
