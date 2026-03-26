@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { transactionContext } from "../store/transactionContextProvider";
 
 const TransactionList = () => {
-  const { transactions } = useContext(transactionContext);
+  const { transactions, deleteTransaction } = useContext(transactionContext);
 
   return (
     <div className="transaction-list-container">
@@ -18,7 +18,7 @@ const TransactionList = () => {
                     {element.title}:${element.amount}
                   </span>
                   <div className="li-btns">
-                    <button>Delete</button>
+                    <button onClick={()=>deleteTransaction(element.id)}>Delete</button>
                     <button>Edit</button>
                   </div>
                 </div>
