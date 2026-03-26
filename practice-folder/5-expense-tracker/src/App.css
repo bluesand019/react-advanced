@@ -195,3 +195,7 @@
   display: flex;
   justify-content: center;
 }
+
+.no-transactions {
+  color: red;
+}

@@ -77,7 +77,7 @@ const AddTransaction = ({ editMode, setEditMode, editingTx, setEditingTx }) => {
             value="income"
           />
         </div>
-        <button type="submit">Save Transaction</button>
+        <button type="submit">{!editMode? "Save Transaction" : "Update Transaction"}</button>
       </form>
     </div>
   );

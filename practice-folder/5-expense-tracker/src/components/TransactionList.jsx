@@ -9,78 +9,41 @@ const TransactionList = ({ setEditMode, setEditingTx }) => {
     <div className="transaction-list-container">
       <h1>All Transactions</h1>
       <div className="transaction-list">
-        <ul>
-          {transactions.map((element) => {
-            return (
-              <li key={element.id}>
-                <div className="list">
-                  <span>
-                    {element.title}:
-                    <span className={element.isExpense ? "red" : "green"}>
-                      <b>
-                        {element.isExpense ? "-" : "+"}${element.amount}
-                      </b>
+        {transactions.length > 0 ? (
+          <ul>
+            {transactions.map((element) => {
+              return (
+                <li key={element.id}>
+                  <div className="list">
+                    <span>
+                      {element.title}:
+                      <span className={element.isExpense ? "red" : "green"}>
+                        <b>
+                          {element.isExpense ? "-" : "+"}${element.amount}
+                        </b>
+                      </span>
                     </span>
-                  </span>
-                  <div className="li-btns">
-                    <button onClick={() => deleteTransaction(element.id)}>
-                      Delete
-                    </button>
-                    <button onClick={() => {
-                      setEditMode(true);
-                      setEditingTx(element);
-                    }}>Edit</button>
+                    <div className="li-btns">
+                      <button onClick={() => deleteTransaction(element.id)}>
+                        Delete
+                      </button>
+                      <button
+                        onClick={() => {
+                          setEditMode(true);
+                          setEditingTx(element);
+                        }}
+                      >
+                        Edit
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </li>
-            );
-          })}
-          <li>
-            <div className="list">
-              <span>dummy 1:-$100</span>
-              <div className="li-btns">
-                <button>Delete</button>
-                <button>Edit</button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="list">
-              <span>dummy 2:-$60</span>
-              <div className="li-btns">
-                <button>Delete</button>
-                <button>Edit</button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="list">
-              <span>dummy 3:+$28</span>
-              <div className="li-btns">
-                <button>Delete</button>
-                <button>Edit</button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="list">
-              <span>dummy 4:+$59</span>
-              <div className="li-btns">
-                <button>Delete</button>
-                <button>Edit</button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="list">
-              <span>dummy 5:-$12</span>
-              <div className="li-btns">
-                <button>Delete</button>
-                <button>Edit</button>
-              </div>
-            </div>
-          </li>
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p className="no-transactions">No transactions to show!</p>
+        )}
       </div>
     </div>
   );
