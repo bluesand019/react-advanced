@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { transactionContext } from "../store/transactionContextProvider";
 
-const TransactionList = () => {
+const TransactionList = ({ setEditMode, setEditingTx }) => {
   const { transactions, deleteTransaction } = useContext(transactionContext);
 
   return (
@@ -12,14 +12,24 @@ const TransactionList = () => {
         <ul>
           {transactions.map((element) => {
             return (
-              <li>
+              <li key={element.id}>
                 <div className="list">
                   <span>
-                    {element.title}:{element.isExpense? "-" : "+"}${element.amount}
+                    {element.title}:
+                    <span className={element.isExpense ? "red" : "green"}>
+                      <b>
+                        {element.isExpense ? "-" : "+"}${element.amount}
+                      </b>
+                    </span>
                   </span>
                   <div className="li-btns">
-                    <button onClick={()=>deleteTransaction(element.id)}>Delete</button>
-                    <button>Edit</button>
+                    <button onClick={() => deleteTransaction(element.id)}>
+                      Delete
+                    </button>
+                    <button onClick={() => {
+                      setEditMode(true);
+                      setEditingTx(element);
+                    }}>Edit</button>
                   </div>
                 </div>
               </li>

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { transactionContext } from "../store/transactionContextProvider";
 
-const AddTransaction = () => {
-  const { addTransaction } = useContext(transactionContext);
+const AddTransaction = ({ editMode, setEditMode, editingTx, setEditingTx }) => {
+  // const [editMode, setEditMode] = useState(false);
+  // const [editingTx, setEditingTx] = useState(null);
+  const { addTransaction, updateTransaction } = useContext(transactionContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const fd = new FormData(event.target);
@@ -15,7 +17,19 @@ const AddTransaction = () => {
     const title = data.title;
     const amount = +data.amount;
     const isExpense = data["transaction-type"] === "expense";
-    addTransaction(title, amount, isExpense);
+
+    if (editMode && editingTx) {
+      updateTransaction(
+        editingTx.id,
+        title,
+        amount,
+        isExpense,
+      );
+      setEditMode(false);
+      setEditingTx(null);
+    } else {
+      addTransaction(title, amount, isExpense);
+    }
 
     event.target.reset();
   };
@@ -30,6 +44,7 @@ const AddTransaction = () => {
         <input
           type="text"
           name="title"
+          defaultValue={editMode ? editingTx.title : ""}
           id="title"
           placeholder="Enter transaction title..."
           required
@@ -40,6 +55,7 @@ const AddTransaction = () => {
         <input
           type="text"
           name="amount"
+          defaultValue={editMode ? editingTx.amount : ""}
           id="amount"
           placeholder="$0.0"
           required

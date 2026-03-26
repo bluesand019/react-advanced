@@ -183,6 +183,14 @@
     background-color: hsla(192, 88%, 84%, 0.616)
 }
 
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
 .transaction-section {
   display: flex;
   justify-content: center;

@@ -1,10 +1,10 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
 export const transactionContext = createContext({
   transactions: [],
   addTransaction: () => {},
   deleteTransaction: () => {},
-  // editTransaction: () => {},
+  updateTransaction: () => {},
 });
 
 function transactionReducer(state, action) {
@@ -25,6 +25,16 @@ function transactionReducer(state, action) {
         ...state,
         transactions: state.transactions.filter((item) => {
           return item.id !== action.payload.id;
+        }),
+      };
+    case "UPDATE_TRANSACTION":
+      return {
+        ...state,
+        transactions: state.transactions.map((element) => {
+          if (element.id === action.payload.id) {
+            return { ...element, ...action.payload.updatedData };
+          }
+          return element;
         }),
       };
     default:
@@ -54,12 +64,24 @@ export default function TransactionContextProvider({ children }) {
       },
     });
   }
-  // function handleEditTransaction() {}
+  function handleUpdateTransaction(id, title, amount, isExpense) {
+    transactionDispatch({
+      type: "UPDATE_TRANSACTION",
+      payload: {
+        id: id,
+        updatedData: {
+          title,
+          amount,
+          isExpense,
+        },
+      },
+    });
+  }
   const ctxValue = {
     transactions: transactionState.transactions,
     addTransaction: handleAddTransaction,
     deleteTransaction: handleDeleteTransaction,
-    // editTransaction: handleEditTransaction,
+    updateTransaction: handleUpdateTransaction,
   };
   return (
     <transactionContext.Provider value={ctxValue}>
