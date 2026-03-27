@@ -1,13 +1,15 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useRef } from "react";
 
 const Modal = ({ children, open, className = '' }) => {
     const dialogRef = useRef();
     useEffect(() => {
+      const modal = dialogRef.current;
         if(open) {
-            dialogRef.current.showModal();
+            modal.showModal();
         }
+        return () => modal.close();
     }, [open])
 
   return createPortal(
