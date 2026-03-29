@@ -8,6 +8,7 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case "increase":
+      //never mutate states rather return a new object
       return {
         counter: state.counter + 1,
         showCounter: state.showCounter
