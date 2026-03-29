@@ -15,7 +15,7 @@ const counterSlice = createSlice({
       state.counter++;
     },
     increase_by_amount(state, action) {
-      state.counter = state.counter + action.amount;
+      state.counter = state.counter + action.payload;
     },
     decrease(state) {
       state.counter--;
@@ -32,4 +32,5 @@ const store = configureStore({
   reducer: counterSlice.reducer
 });
 
+export const counterActions = counterSlice.actions;
 export default store;
