@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import StatusBadge from './StatusBadge';
 import MoodEmoji from './MoodEmoji';
+import "../App.css"
+
 
 
 const Greeting = ({ name }) => {
   const [count, setCount] = useState(0);
 
   return (
-    <div style={{ 
+    <div className='card' style={{ 
       border: '2px solid #646cff', 
       padding: '20px', 
       margin: '10px', 
@@ -25,7 +27,7 @@ const Greeting = ({ name }) => {
       
       <button 
         onClick={() => setCount(count + 1)}
-        style={{ cursor: 'pointer', padding: '10px 20px', backgroundColor: '#646cff', color: 'white', border: 'none', borderRadius: '5px' }}
+        className="btn-boost"
       >
         Boost Mood
       </button>

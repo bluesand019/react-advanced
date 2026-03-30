@@ -1,3 +1,6 @@
+import "../App.css"
+
+
 const MoodEmoji = ({ count }) => {
   let mood = "😴";
   let message = "I'm sleepy...";

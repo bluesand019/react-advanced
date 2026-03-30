@@ -1,3 +1,5 @@
+import "../App.css"
+
 const StatusBadge = ({ count }) => {
   const isActive = count > 0;
   
@@ -12,7 +14,7 @@ const StatusBadge = ({ count }) => {
   };
 
   return (
-    <span style={style}>
+    <span className="badge" style={style}>
       {isActive ? 'Active User' : 'Inactive'}
     </span>
   );
