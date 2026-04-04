@@ -11,17 +11,19 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-between bg-gray-100">
+    <div className="app">
       <Header />
 
-      <main className="p-4 w-full max-w-md">
-        <h2 className="text-xl font-semibold mb-4">Users</h2>
-        {users.map((user) => (
-          <UserCard key={user.id} name={user.name} age={user.age} />
-        ))}
+      <main className="main">
+        <h2 className="title">User List</h2>
+        <div className="card-container">
+          {users.map((user) => (
+            <UserCard key={user.id} name={user.name} age={user.age} />
+          ))}
+        </div>
       </main>
 
       <Footer />
-         </div>
+    </div>
   );
 }
