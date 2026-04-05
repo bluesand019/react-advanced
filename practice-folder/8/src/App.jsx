@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TaskInput from './components/TaskInput';
 import TaskItem from './components/TaskItem';
 import TaskStats from './components/TaskStats';
+import WeatherGreeting from './components/WeatherGreeting';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', fontFamily: 'sans-serif' }}>
+      <WeatherGreeting />
       <h1>My Tasks</h1>
       <TaskInput onAddTask={addTask} />
       
