@@ -1,3 +1,4 @@
+import { useState } from "react";
 function EditModal({ isOpen, task, onSave, onClose }) {
   if (!isOpen) return null;
 
@@ -39,3 +40,4 @@ function EditModal({ isOpen, task, onSave, onClose }) {
     </div>
   );
 }
+export default EditModal;

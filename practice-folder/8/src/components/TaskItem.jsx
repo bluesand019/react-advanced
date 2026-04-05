@@ -14,3 +14,4 @@ function TaskItem({ task, onDelete, onEdit }) {
     </div>
   );
 }
+export default TaskItem;
