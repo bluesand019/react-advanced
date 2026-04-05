@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function FocusTimer() {
-  const [seconds, setSeconds] = useState(1500); // 25 minutes
+  const [seconds, setSeconds] = useState(1500);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,6 @@ function FocusTimer() {
         {formatTime(seconds)}
       </div>
       
-      {/* Visual Progress Bar */}
       <div style={{ height: '4px', background: '#e2e8f0', margin: '10px 0' }}>
         <div style={{ 
           height: '100%', 
@@ -66,7 +65,7 @@ function FocusTimer() {
         }}>
           {isActive ? 'Pause' : 'Start'}
         </button>
-        <button onClick={resetTimer} style={{ background: 'none', border: '1px solid #ccc', cursor: 'pointer', borderRadius: '6px' }}>
+        <button onClick={resetTimer} style={{ backgroundColor: 'grey', border: '1px solid #ccc', cursor: 'pointer', borderRadius: '6px' }}>
           Reset
         </button>
       </div>
