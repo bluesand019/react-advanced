@@ -34,6 +34,15 @@ function App() {
           <TaskItem key={task.id} task={task} onDelete={deleteTask} />
         ))}
         
+        {editingTask && (
+        <EditModal 
+          isOpen={!!editingTask} 
+          task={editingTask} 
+          onClose={() => setEditingTask(null)} 
+          onSave={updateTask} 
+        />
+      )}
+
         <TaskStats totalTasks={tasks.length} onClearAll={clearAllTasks} />
       </div>
 

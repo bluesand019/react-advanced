@@ -1,4 +1,4 @@
-function TaskItem({ task, onDelete }) {
+function TaskItem({ task, onDelete, onEdit }) {
   return (
     <div style={{ 
       display: 'flex', 
@@ -7,11 +7,10 @@ function TaskItem({ task, onDelete }) {
       borderBottom: '1px solid #ddd' 
     }}>
       <span>{task.text}</span>
-      <button onClick={() => onDelete(task.id)} style={{ color: 'red' }}>
-        Delete
-      </button>
+      <div>
+        <button onClick={() => onEdit(task)} style={{ marginRight: '5px', color: '#4a90e2', border: 'none', background: 'none', cursor: 'pointer' }}>Edit</button>
+        <button onClick={() => onDelete(task.id)} style={{ color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}>Delete</button>
+      </div>
     </div>
   );
 }
-
-export default TaskItem;
