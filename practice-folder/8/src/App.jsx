@@ -7,17 +7,32 @@ import FocusTimer from './components/FocusTimer';
 import MoodTracker from './components/MoodTracker';
 import EditModal from './components/EditModal';
 import SearchFilter from './components/SearchFilter';
+import { useEffect } from 'react';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem('my-tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
   const [searchQuery, setSearchQuery] = useState('');
   const [editingTask, setEditingTask] = useState(null);
 
-  const addTask = (text) => setTasks([...tasks, { id: Date.now(), text }]);
+  useEffect(() => {
+    localStorage.setItem('my-tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = (text) => {
+    setTasks([...tasks, { id: Date.now(), text }]);
+  };
+
   const updateTask = (id, newText) => {
     setTasks(tasks.map(t => t.id === id ? { ...t, text: newText } : t));
   };
-  const deleteTask = (id) => setTasks(tasks.filter(t => t.id !== id));
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(t => t.id !== id));
+  };
 
   const filteredTasks = tasks.filter(task => 
     task.text.toLowerCase().includes(searchQuery.toLowerCase())
