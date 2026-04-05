@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import TaskInput from './TaskInput';
-import TaskItem from './TaskItem';
+import TaskInput from './components/TaskInput';
+import TaskItem from './components/TaskItem';
+import TaskStats from './components/TaskStats';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -12,6 +13,12 @@ function App() {
 
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
+  };
+
+  const clearAllTasks = () => {
+    if (window.confirm("Are you sure you want to delete everything?")) {
+      setTasks([]);
+    }
   };
 
   return (
@@ -30,6 +37,11 @@ function App() {
           />
         ))
       )}
+
+      <TaskStats 
+        totalTasks={tasks.length} 
+        onClearAll={clearAllTasks} 
+      />
     </div>
   );
 }
