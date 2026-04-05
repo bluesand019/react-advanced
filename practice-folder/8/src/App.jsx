@@ -3,6 +3,7 @@ import TaskInput from './components/TaskInput';
 import TaskItem from './components/TaskItem';
 import TaskStats from './components/TaskStats';
 import WeatherGreeting from './components/WeatherGreeting';
+import FocusTimer from './components/FocusTimer';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -17,33 +18,25 @@ function App() {
   };
 
   const clearAllTasks = () => {
-    if (window.confirm("Are you sure you want to delete everything?")) {
-      setTasks([]);
-    }
+    if (window.confirm("Start fresh?")) setTasks([]);
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', fontFamily: 'sans-serif' }}>
+    <div style={{ maxWidth: '400px', margin: '40px auto', padding: '20px' }}>
       <WeatherGreeting />
-      <h1>My Tasks</h1>
-      <TaskInput onAddTask={addTask} />
       
-      {tasks.length === 0 ? (
-        <p>No tasks yet. Enjoy your day!</p>
-      ) : (
-        tasks.map(task => (
-          <TaskItem 
-            key={task.id} 
-            task={task} 
-            onDelete={deleteTask} 
-          />
-        ))
-      )}
+      <div style={{ minHeight: '300px' }}>
+        <h1>My Tasks</h1>
+        <TaskInput onAddTask={addTask} />
+        
+        {tasks.map(task => (
+          <TaskItem key={task.id} task={task} onDelete={deleteTask} />
+        ))}
+        
+        <TaskStats totalTasks={tasks.length} onClearAll={clearAllTasks} />
+      </div>
 
-      <TaskStats 
-        totalTasks={tasks.length} 
-        onClearAll={clearAllTasks} 
-      />
+      <FocusTimer />
     </div>
   );
 }
