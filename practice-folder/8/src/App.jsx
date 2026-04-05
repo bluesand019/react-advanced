@@ -4,6 +4,7 @@ import TaskItem from './components/TaskItem';
 import TaskStats from './components/TaskStats';
 import WeatherGreeting from './components/WeatherGreeting';
 import FocusTimer from './components/FocusTimer';
+import MoodTracker from './components/MoodTracker';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -37,6 +38,7 @@ function App() {
       </div>
 
       <FocusTimer />
+      <MoodTracker />
     </div>
   );
 }
