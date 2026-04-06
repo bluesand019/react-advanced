@@ -10,7 +10,8 @@ function App() {
   return (
     <>
 
-    {data.loading && <h2>Loading...</h2>}
+      {data.loading && <h2>Loading...</h2>}
+      {data.error && <h2>{data.error}</h2>}
       <p>Hello</p>
       <button onClick={() => dispatch(getAllData())}>Get Github users</button>
       {data.users.map((item) => {

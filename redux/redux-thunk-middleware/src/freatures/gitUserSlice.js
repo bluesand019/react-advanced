@@ -6,29 +6,36 @@ const initialState = {
   error: null,
 };
 
-export const getAllData = createAsyncThunk("gitUsers", async () => {
-    const response = await fetch('https://api.github.com/users');
+export const getAllData = createAsyncThunk("gitUsers", async (args, {rejectWithValue}) => {
+  try {
+    const response = await fetch("https://api.github.com/users");
+    if(!response.ok) {
+      return rejectWithValue("API Error: "+response.status);
+    }
     const result = await response.json();
     return result;
-})
+  } catch (error) {
+    return rejectWithValue("Oops an error occurred!");
+  }
+});
 
 export const gitUserSlice = createSlice({
   name: "gitUser",
   initialState,
   extraReducers: (builder) => {
-  builder
-    .addCase(getAllData.pending, (state) => {
-      state.loading = true;
-    })
-    .addCase(getAllData.fulfilled, (state, action) => {
-      state.loading = false;
-      state.users = action.payload;
-    })
-    .addCase(getAllData.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    });
-}
+    builder
+      .addCase(getAllData.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllData.fulfilled, (state, action) => {
+        state.loading = false;
+        state.users = action.payload;
+      })
+      .addCase(getAllData.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export default gitUserSlice.reducer;
