@@ -9,6 +9,8 @@ function App() {
   const data = useSelector(state => state.gitUser);
   return (
     <>
+
+    {data.loading && <h2>Loading...</h2>}
       <p>Hello</p>
       <button onClick={() => dispatch(getAllData())}>Get Github users</button>
       {data.users.map((item) => {
