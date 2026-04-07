@@ -9,7 +9,9 @@ function App() {
     <>
       {data.loading && <h2>loading...</h2>}
       {data.error && <h2>{data.error}</h2>}
-      <button onClick={() => dispatch(getData())}>Get data</button>
+      <button onClick={() => dispatch(getData())} disabled={data.loading}>
+        {data.loading ? "Fething...": "Get data"}
+      </button>
       {data.info && (
         <div className="fethedWether">
           <h2>{data.info?.name}</h2>
